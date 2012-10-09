@@ -1,0 +1,283 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage{enumerate}
+
+\title{Social Networking Study on DeviantArt Artificial Network Algorithm}
+
+\date{\emph{22.04.2011} \\ \emph{Version 2.0} }
+
+\author{CmpE 492 Project\\
+	By: Ferhat Elmas \\
+	Student Id: 2006101102\\
+	Advisor: Haluk Bing\"{o}l
+}
+
+\begin{document}
+\pagenumbering{roman}
+
+\maketitle
+
+\begin{table}[htdp]
+\begin{center}
+\textup{\Huge Version History}
+\begin{tabular}{|c|c|p{10cm}|}
+\hline
+\textbf{Version} & \textbf{Date} & \textbf{Explanation} \\
+\hline
+1.0 & 30.03.2011 & Algorithm Design and Specification \\
+\hline
+2.0& 22.04.2011 & Some errors (keyword, logic, notation) are fixed, the details of the distributions of the deviant and deviation generation and a table of some basic properties of distributions are added, algorithm is improved and details are added\\
+\hline
+&&\\
+\hline
+&&\\
+\hline
+&&\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+%\clearpage
+
+\begin{abstract}
+	
+	Effective users are very important in the network because they can easily affect the distribution of the network via some relations such as favorites. Favorite relation is a powerful tool to increase or decrease the value of a deviation. If a well known user adds the deviation into his list, the value of the deviation increases rapidly. In this paper, the algorithm to find the most effective user respect to favorite relation is expressed. \\
+	
+	On the other hand, this algorithm is a result of some set of the assumptions. Therefore, an artificial network is created to test the power of the algorithm and the details of the generation and assumptions of the articial network are defined.
+\end{abstract}
+
+\tableofcontents
+
+\chapter{Introduction}
+\pagenumbering{arabic}
+	
+	\hspace{0.6cm}An algorithm which can determine the most effective user with 100\% guarantee is the main purpose of  the Social Analysis on DeviantART project. \\	
+	
+	Different algorithms can be easily developed but we can't sure that developed algorithm is the desired algorithm. Therefore, a network is needed whose values are well established (known). \\
+
+	Moreover, we need data structures (framework) to generate a network, namely, deviant, deviation and network. Firstly, framework is explained. Secondly, network generation is detailed and finally, the algorithm to find the most effective user and its related parameters are explained. 
+
+
+\chapter{Framework} 
+
+	\hspace{0.6cm}There are three objects to represent users (deviant), artworks (deviation) and relations with each other (network). 
+
+\section{Deviant}
+
+	\hspace{0.6cm}Deviant object is defined to represent the users of the DeviantART.  \\
+	
+	There are two properties, namely, \emph{id} and \emph{authority}. \emph{id} is defined to select the users uniquely and varies between 0 and the number of the users - 1. \emph{authority} is here to specify the effectiveness of the user. \emph{authority} varies between 0 and 1. The more effective user is, the closer to 1 \emph{authority} is. 	
+
+\section{Deviation}
+
+	\hspace{0.6cm}Deviation object is defined to represent the artworks in the DeviantART. \\
+
+	There are four properties, namely, \emph{id}, \emph{quality}, \emph{favorite list}, \emph{time list}. \emph{id} is defined to select the artworks uniquely and varies between 0 and the number of the artworks - 1. \emph{quality} is a number to specify the quality (art-criticque) of the artwork. The higher quality artwork is, the closer to 1 \emph{quality} is. \emph{favorite list} holds the ids of the users that added this artwork to their favorite list and corollary, \emph{time list} holds the days when these users added the artwork. If a user added before than others, his index will be smaller than others.
+
+\section{Network} 
+
+	\hspace{0.6cm}Network object is defined to represent relations in the DeviantART. \\
+
+	There are six properties, namely, \emph{deviants}, \emph{deviations}, \emph{deviantCount}, \emph{deviationCount}, \emph{authorityID} and \emph{random}.	 \emph{deviantCount} and \emph{deviationCount} are the numbers of the deviants and deviations, respectively. \emph{deviants} and \emph{deviations} hold the generated deviants and deviations, respectively. \emph{authorityID} is the {id} property of the most effective user in the network. Finally, \emph{random} is the pseudo random number generator which is used in generation of the properties and matching of the users and artworks. 
+
+\chapter{Network Generation}
+
+\section{Generation of the Deviants}
+
+	\hspace{0.6cm}\emph{id} property is incremented by one in each deviant generation. \emph{authority} property comes from one probability distribution and this distribution is chosen by the given parameter. There are distributions in the form of $\frac{1}{x^n}$ or $2x - 2$. If zero is entered to select distribution, the authority of the deviants are generated with $2x - 2$ so pseudo number for \emph{authority} is generated via this calculation: $1 - \sqrt R $ where R is a random number berween 0 and 1. Otherwise, the authority of the deviants are generated with $\frac{1}{x^n}$. For example, when 1 is entered, distribution becomes $\frac{1}{x}$ and when 2 is entered, distribution becomes $\frac{1}{x^2}$ and it is calculated via this calculation: $-\log R/ n$ where R is a random number berween 0 and 1. While input is increasing, the mean of the distribution decreases to zero which means that a lot of users have small \emph{authority} and have a minor effect on the network.    
+
+
+\section{Generation of the Deviations}
+
+	\hspace{0.6cm}\emph{id} property is incremented by one in each deviation generation. \emph{quality} property comes from one probability distribution and this distribution is chosen by the given parameter. There are distributions in the form of $\frac{1}{x^n}$ or $2x - 2$. If zero is entered to select distribution, the quality of the deviations are generated with $2x - 2$ so pseudo number for \emph{quality} is generated via this calculation: $1 - \sqrt R $ where R is a random number berween 0 and 1. Otherwise, deviations are generated with $\frac{1}{x^n}$. For example, when 1 is entered, distribution becomes $\frac{1}{x}$ and when 2 is entered, distribution becomes $\frac{1}{x^2}$ and it is calculated via this calculation: $-\log R/ n$ where R is a random number berween 0 and 1. While input is increasing, the mean of the distribution decreases to zero which means that a lot of artworks have small \emph{quality} and really good artworks will be minority in the network.   In this sense, deviation generation is very similar to deviant generation, the only possible difference is their chosen distributions because deviants and deviations can be generated separately from different distributions. \\
+
+\begin{center}
+\textup{\textbf{Distributons of Deviant and Deviation Generation\\}}
+\textup{These values is just runs of the distribution \emph{10000} times}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Distribution Select} & \textbf{Mean} & \textbf{Variance} \\
+\hline
+0 & 0.3327 & 0.0562\\
+\hline
+1 & 0.4178 & 0.0789 \\
+\hline
+2 & 0.3459 & 0.0694 \\
+\hline
+3 & 0.2791 & 0.0558 \\
+\hline
+4 & 0.2300 & 0.0425 \\
+\hline
+5 & 0.1903 & 0.0316 \\
+\hline
+6 & 0.1647 & 0.0267 \\
+\hline
+7 & 0.1415 & 0.0198 \\
+\hline
+8 & 0.1262 & 0.0158 \\
+\hline
+9 & 0.1097 & 0.0115 \\
+\hline
+10 & 0.1006 & 0.0102 \\
+\hline
+11 & 0.0903 & 0.0080 \\
+\hline
+12 & 0.0825 & 0.0069 \\
+\hline
+13 & 0.0765 & 0.0059 \\
+\hline
+14 & 0.0722 & 0.0052 \\
+\hline
+15 & 0.0663 & 0.0043 \\
+\hline
+16 & 0.0622 & 0.0039 \\
+\hline
+17 & 0.0581 & 0.0034 \\
+\hline
+18 & 0.0560 & 0.0032 \\
+\hline
+19 & 0.0520 & 0.0027 \\
+\hline
+20 & 0.0502 & 0.0025 \\
+\hline
+\end{tabular}
+\end{center}
+
+\clearpage
+
+\section{Matching of Deviants and Deviations}	
+	
+	\hspace{0.6cm}There are \emph{three} parameters used in this step, namely, \emph{simulation length},  $\alpha$ and $\beta$. \emph{simulation length} is self descriptive and is used to specity the number of the days for which simulation runs. $\alpha$ is used to calculate the mean of the normal distribution which is used to generate the number of daily transactions. $\beta$ is used to scale the mean which is calculated by using $\alpha$ to calculate the variance of the normal distribution. The calculation of the mean and variance as follows: \\
+
+\emph{Mean of the Daily Operations: }
+$$ \mu = \alpha * \pi(deviants) * \pi(deviations)$$
+
+\emph{Variance of the Daily Operations:}
+$$ \sigma^2 =  \beta * \mu $$ \\
+
+$\pi$ is used as the number-of operator. \\
+
+	In each daily operations, an deviant and a deviation are randomly chosen. Then, \emph{favorite list} of the deviation is controlled whether chosen deviant is in the list. If the deviant has already added the deviation into his list, the deviant is in the list so there is no need to take action and transaction is finished. Otherwise, the deviant can add the deviation and it is according to the \emph{quality} of the deviation. One random number is generated and it is compared to \emph{quality} of the deviation. If the generated random number is smaller than the \emph{quality}, the deviant will add the deviation into his list to satisfy the basic addition probability. The deviation is added and \emph{favorite list} and \emph{time list} are updated. Moreover, if the \emph{authority} of the deviant is bigger than the \emph{quality}, then \emph{quality}  of the deviation is increased to the \emph{authority} of the deviant. \\
+
+	Simulation is started in the first day and in each day a number is generated from $N(\mu, \sigma^2)$  and daily operations are performed as much as this number and then day is incremented and another day begins. When simulation length is hit, the algorithm stops.
+
+	Here are the step by step procedure: 
+
+\begin{itemize}
+
+\item Calculate the $\mu$ of the normal distribution which is used to generate the number of daily transactions via $\alpha * \pi(deviants) * \pi(deviations)$
+
+\item Calculate the $\sigma$ of the normal distribution which is used to generate the number of daily transactions via $ \sigma^2 =  \beta * \mu $
+
+\item Create a pseudo number generator from the normal distribution with parameters $\mu$ and $\sigma$
+
+\item Set the simulation day to one
+
+\item Repeat as much as \emph{simulation length}
+
+	\begin{itemize}
+
+	\item Generate a number for daily transactions
+
+	\item Repeat as much as the \emph{generated number}
+
+		\begin{itemize}
+
+		\item Randomly choose a deviation 
+
+		\item Randomly choose a deviant 
+
+		\item Check the \emph{favorite list} of the deviation for the chosen deviant
+
+		\item If chosen deviant has already added the chosen deviation into his list, there is no action and continue for new transaction. In other words, the {favorite list} of the deviation  already contains the randomly chosen deviant
+
+		\item Else deviant hasn't added the chosen deviation yet, so give a chance to deviant to add the deviation into his list. This chance is proportional to the \emph{quality} of the deviation and is independent from the \emph{authority} of the deviant. In other words, deviant make the deviation his favorite with the probability of its \emph{quality}
+
+		\item If chosen deviant adds the chosen deviation into his list according to above negotiation, update the \emph{quality} of the deviation with the max of  \emph{quality of the deviation} and \emph{authority of the deviant}. If effective users add the deviation into their list, the \emph{quality} of the deviation increases and so the probablity increases so that other users can add the deviation when they meet the deviation 
+
+		\end{itemize}
+
+	\end{itemize}
+
+\end{itemize}	
+
+\chapter{Network Resolution - Algorithm}
+
+	\hspace{0.6cm}If we use the Network generation algorithm, we will have an artificial network which is very similar to DeviantART network but we definitely know its parameters so when we run the Network resolution algorithm on this network, if the algorithm can find the actual parameters or at least with 90\% probability, we have a powerful algorithm. 
+
+	\begin{itemize}
+
+	\item Create \emph{Global hashmap}, this data structure holds the number of the deviations for that the deviant is the most effective user. Therefore, the bigger this value is, the more effective this deviant is. The distribution of values is correlated with the distribution that is used to generate the deviants
+
+	\item Calculate the maximum size of the favorite list of the deviations
+
+	\item Repeat for each deviation,
+
+		\begin{itemize}
+
+		\item Get the \emph{favorite list} and \emph{time list} of the deviation
+
+		\item Calculate the \emph{frequency vector} of the deviation, the length of this vector is equal to the length of the simulation.
+	
+ 			\emph{Frequency vector}[\emph{i}] = $\sharp$ of the transactions that the deviation is marked as favorite in the day \emph{i}
+
+		\item Sum the successful transactions of the consecutive days (indices of \emph{frequency vector}) in a sliding window fashion. There is an important parameter here, namely \emph{derivation window size}. This parameter specifies the number of consecutive days (size of the sliding window).
+
+		\item Pick the day where maximum increase has happened (summation is maximum), there can be multiple days so from this step, the vector of peak days is found.
+
+		\item Since these maximums are summation of the consecutive days, we need the actual day in which peak has happened. Therefore, go back as much as the size of the \emph{derivation window} and get the maximum of the partition. This is maximum of the smoothed maximums. However,  there can be multiples so to eliminate the multiplicity check difference between the number of the favorites in the actual day and previous day. Pick the day(s) that has the biggest difference. Found day can be first day which prevents us to check the day before. In this situation, we neglect the first day because if lots of users have added the deviation into their favorite lists in the first day that deviation is uploaded, this implies deviation is intrinsically attractive and good, there is no effect from users.
+		
+		\item Repeat for each day of the found peak vector
+
+			\begin{itemize}
+
+			\item For each peak day, mark the deviants that added the deviation \emph{k} days ago as effective user, and update \emph{global hashmap}. Moreover, \emph{k} is the \emph{setup window size} and it is supplied into the algorithm. However, while marking, there is a weight since all favorite lists are not in the same size and weight is calculated via division of the size of the \emph{favorite list} of the deviation to max of the sizes of the \emph{favorite list} of the deviations. As a result, weights are in the range of [0, 1]
+
+			\end{itemize}
+
+		\item Get the deviant(s) that has the biggest marking number from \emph{global hashmap}. 	
+
+		\end{itemize}
+
+	\item \emph{Derivative window size} and \emph{Setup window size} are calculated according to the $\alpha$  and \emph{simulation length} parameters. $\alpha * \pi(deviations)$ approximately specifies the number of transactions that each deviant can do each day. \emph{Simulation length is related} because if \emph{simulation length} is long, we should extend the size of the windows or decrease, otherwise.
+
+	\item We can calculate $\alpha$ of the real network and also we know the length of the data. Therefore, this algorithm can be easily extended to DeviantART.
+
+	\end{itemize}
+	
+
+\chapter{Conclusions and Future Work}
+
+	This algorithm sufficiently gives good results when the parameters are chosen with caution. However, there are some difficulties in choosing parameters and distributions that are used to generate the deviants and deviations. \\
+
+	Furthermore, network resolution algorithm works well on the networks whose internal dynamics run as in the network generator algorithm generated networks and we aren't sure DeviantART works as well. \\
+
+	We will specifiy the procedure of the selection of the parameters and then run the algorithm on the DeviantART.  We will follow the users that are found as the most effective user by the algorithm to test the results. 
+
+\chapter{References}
+
+\begin{itemize}
+
+\item \textbf{DeviantART : http://www.deviantart.com} \\
+
+\item \textbf{DeviantART in Spotlight: A Network of Arts and Artists }
+
+Almila Akdag Salah, Albert Ali Salah, Bart Buter, Nick Dijkshoorn, Davide Modolo, Quang Nguyen, Sander van Noort, Bart van de Poel \\
+
+\item \textbf{TADA: Toolkit for Analysis of deviantART}
+
+Bart Buter, Nick Dijkshoorn, Davide Modolo, Quang Nguyen, Sander van Noort, Bart van de Poel \\
+
+\item \textbf{Community Structure in social and biological networks}
+
+M. Girvan and E.J Newman \\
+
+\item \textbf{http://en.wikipedia.org/wiki/DeviantArt} \\
+
+\item \textbf{http://www.dmusic.com} \\
+
+\item \textbf{http://web.archive.org/web/*/http://www.deviantart.com} \\
+
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,16 @@
+\contentsline {chapter}{VERSION HISTORY}{i}
+\contentsline {chapter}{ABSTRACT}{ii}
+\contentsline {chapter}{\numberline {1.}Introduction}{1}
+\contentsline {chapter}{\numberline {2.}Difference of Current Project}{3}
+\contentsline {section}{\numberline {2.1.} Why is Favorite - Watcher Relation important?}{3}
+\contentsline {section}{\numberline {2.2.} How can Favorite - Watcher Relation shape the network?}{3}
+\contentsline {chapter}{\numberline {3.}Data Fetch}{4}
+\contentsline {section}{\numberline {3.1.} Wayback Machine}{4}
+\contentsline {section}{\numberline {3.2.} Periodic Snapshots}{4}
+\contentsline {section}{\numberline {3.3.} Intelligent Crawler}{5}
+\contentsline {chapter}{\numberline {4.}Effect Coefficient - Algorithms}{6}
+\contentsline {chapter}{\numberline {5.}Results of Applied Algorithms}{8}
+\contentsline {section}{\numberline {5.1.} Improvements}{8}
+\contentsline {section}{\numberline {5.2.} Artificial Network}{9}
+\contentsline {chapter}{\numberline {6.}Conclusions and Future Work}{11}
+\contentsline {chapter}{\numberline {7.}References}{12}

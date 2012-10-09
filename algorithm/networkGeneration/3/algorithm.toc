@@ -1,0 +1,12 @@
+\contentsline {chapter}{\numberline {1}Introduction}{1}
+\contentsline {chapter}{\numberline {2}Framework}{2}
+\contentsline {section}{\numberline {2.1}Deviant}{2}
+\contentsline {section}{\numberline {2.2}Deviation}{2}
+\contentsline {section}{\numberline {2.3}Network}{3}
+\contentsline {chapter}{\numberline {3}Network Generation}{4}
+\contentsline {section}{\numberline {3.1}Generation of the Deviants}{4}
+\contentsline {section}{\numberline {3.2}Generation of the Deviations}{4}
+\contentsline {section}{\numberline {3.3}Matching of Deviants and Deviations}{6}
+\contentsline {chapter}{\numberline {4}Network Resolution - Algorithm}{8}
+\contentsline {chapter}{\numberline {5}Conclusions and Future Work}{10}
+\contentsline {chapter}{\numberline {6}References}{11}

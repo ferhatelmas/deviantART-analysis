@@ -1,0 +1,38 @@
+\contentsline {chapter}{\numberline {1}Introduction}{1}
+\contentsline {chapter}{\numberline {2}DeviantART}{2}
+\contentsline {section}{\numberline {2.1}What is DeviantART?}{2}
+\contentsline {section}{\numberline {2.2}Difference of DeviantART}{3}
+\contentsline {chapter}{\numberline {3}Crawled Data}{4}
+\contentsline {section}{\numberline {3.1}Category Structure}{4}
+\contentsline {section}{\numberline {3.2}3D Game}{4}
+\contentsline {section}{\numberline {3.3}Info Structure}{5}
+\contentsline {section}{\numberline {3.4}Why Favorite is important?}{5}
+\contentsline {section}{\numberline {3.5}Data Structure}{6}
+\contentsline {chapter}{\numberline {4}Framework}{7}
+\contentsline {section}{\numberline {4.1}User}{7}
+\contentsline {section}{\numberline {4.2}Resource}{8}
+\contentsline {section}{\numberline {4.3}Network}{9}
+\contentsline {chapter}{\numberline {5}Data Generation}{10}
+\contentsline {section}{\numberline {5.1}Assumptions}{10}
+\contentsline {section}{\numberline {5.2}Distributions of the Generation}{10}
+\contentsline {section}{\numberline {5.3}Generation of the Users}{13}
+\contentsline {section}{\numberline {5.4}Generation of the Resources}{13}
+\contentsline {section}{\numberline {5.5}Matching of Deviants and Deviations}{13}
+\contentsline {chapter}{\numberline {6}Analysis of the Generated Data}{17}
+\contentsline {section}{\numberline {6.1}Algorithm}{17}
+\contentsline {section}{\numberline {6.2}Parameter Analysis}{20}
+\contentsline {chapter}{\numberline {7}Analysis of Empiricial Data}{23}
+\contentsline {section}{\numberline {7.1}Power Law at Everywhere}{23}
+\contentsline {subsection}{\numberline {7.1.1}User}{23}
+\contentsline {subsection}{\numberline {7.1.2}Resource}{27}
+\contentsline {section}{\numberline {7.2}Average Statistics of the Power Laws}{30}
+\contentsline {subsection}{\numberline {7.2.1}User}{30}
+\contentsline {subsection}{\numberline {7.2.2}Resource}{30}
+\contentsline {section}{\numberline {7.3}Classification}{30}
+\contentsline {subsection}{\numberline {7.3.1}User}{32}
+\contentsline {subsection}{\numberline {7.3.2}Resource}{32}
+\contentsline {subsection}{\numberline {7.3.3}Implication of Classes}{32}
+\contentsline {subsection}{\numberline {7.3.4}Differences in the timeline of resources}{32}
+\contentsline {chapter}{\numberline {8}Conclusions and Future Work}{46}
+\contentsline {chapter}{\numberline {9}Appendix}{47}
+\contentsline {chapter}{\numberline {10}References}{48}

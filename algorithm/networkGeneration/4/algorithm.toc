@@ -1,0 +1,16 @@
+\contentsline {chapter}{\numberline {1}Introduction}{1}
+\contentsline {chapter}{\numberline {2}Framework}{2}
+\contentsline {section}{\numberline {2.1}User}{2}
+\contentsline {section}{\numberline {2.2}Resource}{3}
+\contentsline {section}{\numberline {2.3}Network}{4}
+\contentsline {chapter}{\numberline {3}Data Generation}{5}
+\contentsline {section}{\numberline {3.1}Distributions of the Generation}{5}
+\contentsline {section}{\numberline {3.2}Generation of the Users}{7}
+\contentsline {section}{\numberline {3.3}Generation of the Resources}{7}
+\contentsline {section}{\numberline {3.4}Matching of Deviants and Deviations}{7}
+\contentsline {chapter}{\numberline {4}Analysis of the Generated Data}{11}
+\contentsline {section}{\numberline {4.1}Algorithm}{11}
+\contentsline {section}{\numberline {4.2}Parameter Analysis}{14}
+\contentsline {chapter}{\numberline {5}Conclusions and Future Work}{17}
+\contentsline {chapter}{\numberline {6}Appendix}{18}
+\contentsline {chapter}{\numberline {7}References}{19}
